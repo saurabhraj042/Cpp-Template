@@ -66,15 +66,19 @@ ll exp(ll a,ll b){
 // Sieve optimisation for  Finding Prime Numbers within a range N
 int primeSieveArray[100001];
 void primeSieve(ll N){
+   
    primeSieveArray[100001]={0}; // Initialising every element as 0 first
 
-//Since every prime int can be a subset of odd ints
+   //Since every prime int can be a subset of odd ints
+   
    for(ll i=3;i<=N;i+=2){
-      primeSieveArray[i]=1;// Since every even integer except 2 is not prime we dnt take them in consider to optimise the approach
+      
+      primeSieveArray[i]=1; // Since every even integer except 2 is not prime we dnt take them in consider to optimise the approach
    }
 
-//For ex 5 10 15 20 ... 25 30 ....
-// In this way the 10,15,20 are already marked 0 or non prime with prev ints that are <5 we do not need to traverse again so we start from sq of 5
+   //For ex 5 10 15 20 ... 25 30 ....
+   // In this way the 10,15,20 are already marked 0 or non prime with prev ints that are <5 we do not need to traverse again so we start from sq of 5
+   
    for(ll i=3;i<=N;i+=2){
       // If the number is set prime all the multiples of it should be non-prime
       if(primeSieveArray[i]==1){
@@ -84,6 +88,29 @@ void primeSieve(ll N){
       }
    }
 }
+
+
+ll oddSieveArray[1000001];
+void oddSieve(ll n){
+   oddSieveArray[1000001]={0};
+
+   for(ll i=4;i<n;i+=2){
+      oddSieveArray[i]=1;
+   }
+
+   for(ll i=3;i<sqrt(n);i++){
+      for(int j=i*i;j<n;j+=i){
+         oddSieveArray[j]=1;
+      }
+   }
+}
+
+
+bool sortbysec(const pair<int,int> &a, 
+              const pair<int,int> &b) 
+{ 
+    return (a.second < b.second); 
+} 
 
 int main(){
 
@@ -96,13 +123,13 @@ int main(){
     #endif 
 
    
-   ll t;
+   ll t=1;
    cin>>t;
   
 
    while(t--){
+      
      
- 
       
       cout<<"\n";
    }
